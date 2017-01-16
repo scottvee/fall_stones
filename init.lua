@@ -3,6 +3,7 @@ fall_stones_config = Settings(minetest.get_worldpath().."/fall_stones.conf")
 local conf_table = fall_stones_config:to_table()
 
 local defaults = {
+	enable_crafting_recipes = "true",
 	enable_falling_clay = "true",
 	enable_falling_cobble = "true",
 	enable_falling_dirt = "true",
@@ -110,6 +111,57 @@ if fall_stones_config:get_bool("enable_falling_stonebrick") then
 	})
 end
 
+if fall_stones_config:get_bool("enable_crafting_recipes") then 
+	if fall_stones_config:get_bool("enable_falling_clay") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_clay 2',
+			recipe = { 'default:clay', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+	if fall_stones_config:get_bool("enable_falling_cobble") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_cobble 2',
+			recipe = { 'default:cobble', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+	if fall_stones_config:get_bool("enable_falling_dirt") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_dirt 2',
+			recipe = { 'default:dirt', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+	if fall_stones_config:get_bool("enable_falling_ice") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_ice 2',
+			recipe = { 'default:ice', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+	if fall_stones_config:get_bool("enable_falling_snow") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_snow 2',
+			recipe = { 'default:snowblock', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+	if fall_stones_config:get_bool("enable_falling_stone") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_stone 2',
+			recipe = { 'default:stone', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+	if fall_stones_config:get_bool("enable_falling_stonebrick") then 
+		minetest.register_craft({
+			type = "shapeless",
+			output = 'fall_stones:fall_stone_brick 2',
+			recipe = { 'default:stonebrick', 'default:gravel', 'default:gravel', 'default:gravel'}
+		})
+	end
+end
 
 local modpath = minetest.get_modpath("fall_stones")
 
